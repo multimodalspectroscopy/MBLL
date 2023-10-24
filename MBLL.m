@@ -24,6 +24,10 @@ ext_coeffs_inv = pinv(ext_coeffs);
 
 [x,y] = size(spectra);
 
+% Preallocate to improve performance
+atten = zeros([x,y]);
+atten_int = zeros([length(wl),x]);
+
 % change in attenuation
 for i = 1:x 
         atten(i,:) = log10(spectra(1,:)./spectra(i,:)); % log 10
